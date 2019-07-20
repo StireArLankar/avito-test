@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import React, { useContext, Fragment } from 'react'
 import { getFormattedPrice } from 'Src/utils'
 import SellersContext from 'Context/sellers'
@@ -25,23 +26,29 @@ const ProductPreview = (props: IProduct) => {
   const renderSellerInfo = () => {
     return seller && (
       <Fragment>
-        <p>{seller.name}</p>
-        <span>{seller.rating}</span>
+        <p className={styles.paragraph}>{seller.name}</p>
+        <span className={styles.paragraph}>{seller.rating}</span>
       </Fragment>
     )
   }
 
   return (
-    <article>
-      <h3>{props.title}</h3>
+    <article className={styles.wrapper}>
+      <div className={styles.titleWrapper}>
+        <h3 className={styles.title}>{props.title.slice(0, 1).toUpperCase() + props.title.slice(1)}</h3>
+      </div>
       <div className={styles.imgWrapper}>
         <img src={props.pictures[0]} alt={props.title} className={styles.img}/>
-        <span>{props.pictures.length - 1}</span>
+        <span className={styles.imgCount}>{props.pictures.length - 1}</span>
       </div>
-      <p>{props.price && getFormattedPrice(props.price)}</p>
-      <p>10 октября 10:37</p>
-      {renderSellerInfo()}
-      <FavButton isFav={isFav} onClick={onFavClick}/>
+      <div className={styles.description}>
+        <p className={cn(styles.paragraph, styles.price)}>{getFormattedPrice(props.price)}</p>
+        <p className={styles.paragraph}>10 октября 10:37</p>
+        {renderSellerInfo()}
+      </div>
+      <div className={styles.favWrapper}>
+        <FavButton isFav={isFav} onClick={onFavClick}/>
+      </div>
     </article>
   )
 }

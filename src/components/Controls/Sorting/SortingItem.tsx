@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import React, { useContext } from 'react'
 import SortingContext from 'Context/sorting'
 import { ISorting } from 'Context/sorting/sorting-data'
@@ -11,11 +12,13 @@ const SortingItem = (props: ISorting) => {
     context.updateSorting(props.value)
   }
 
+  const buttonClassNames = cn(styles.button, { [styles.active]: context.value === props.value })
+
   return (
     <div className={styles.buttonWrapper}>
       <button
         type='button'
-        className={styles.button}
+        className={buttonClassNames}
         disabled={props.disabled}
         onClick={onClick}
       >

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import ProductsContext from 'Context/products'
 import ProductPreview from './ProductPreview'
+
 import styles from './products.module.scss'
 
 const ProductsList = () => {
@@ -25,7 +26,7 @@ const ProductsList = () => {
 
   const renderShowMoreButton = () => {
     return context.products.length > shownAmount
-      ? <button type='button' onClick={showMore}>Показать еще</button>
+      ? <button type='button' onClick={showMore} className={styles.showMore}>Показать еще</button>
       : null
   }
 

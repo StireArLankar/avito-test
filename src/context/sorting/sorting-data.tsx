@@ -4,6 +4,8 @@ const popularitySorting: sortingRule = (array) => array.slice()
 
 const priceSorting: sortingRule = (array) => (
   array.slice().sort((a, b) => {
+    if (!a.price) return 1
+    if (!b.price) return -1
     if (a.price > b.price) return 1
     if (a.price < b.price) return -1
     return 0

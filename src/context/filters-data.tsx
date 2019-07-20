@@ -1,14 +1,14 @@
 import { IProduct } from 'Context/products'
 
 type sumval = {
-  from: number | null
-  to: number | null
+  from: string
+  to: string
 }
 
 const sumRule = (array: IProduct[], value: sumval) => (
   array.filter((item) => {
-    const bottomCheck = value.from ? value.from < item.price : true
-    const topCheck = value.to ? value.to > item.price : true
+    const bottomCheck = value.from ? Number(value.from) < item.price : true
+    const topCheck = value.to ? Number(value.to) > item.price : true
     return bottomCheck && topCheck
   })
 )
@@ -37,8 +37,8 @@ const data: IFilter[] = [
     title: 'Сумма',
     type: 'sum_range',
     default_value: {
-      from: null,
-      to: null
+      from: '',
+      to: ''
     },
     rule: sumRule
   },

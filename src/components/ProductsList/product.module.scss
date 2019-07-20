@@ -1,3 +1,36 @@
+$padding: 2px;
+
+.wrapper {
+  position: relative;
+  margin-top: 45px;
+  padding: $padding;
+  border: 1px solid black;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.titleWrapper {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
+.wrapper:hover .title {
+  transform: translateY(-38px)
+}
+
 .imgWrapper {
   position: relative;
   width: 100%;
@@ -11,4 +44,40 @@
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%)
+}
+
+.imgCount {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  z-index: 10;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.description {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.paragraph {
+  margin: 10px 0 0;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.favWrapper {
+  position: absolute;
+  bottom: $padding;
+  right: $padding + 4px;
 }

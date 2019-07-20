@@ -1,3 +1,4 @@
+import { compose } from '@typed/compose'
 import React, { useState, useEffect, useContext } from 'react'
 import ProductsContext, { IProduct } from 'Context/products'
 import withSellers from './with-sellers'
@@ -53,7 +54,7 @@ const App = () => {
 
     const debounce = setTimeout(updateItems, 300)
     return () => { clearTimeout(debounce) }
-  }, [favourites, filters, items, sortingValue])
+  }, [favourites, filters, items, sortingRule])
 
   return (
     <ProductsContext.Provider value={{ products: filteredItems }}>
@@ -64,4 +65,11 @@ const App = () => {
   )
 }
 
-export default withSellers(withFilters(withFavourites(withSorting(App))))
+const composition = compose(
+  withSellers,
+  withFilters,
+  withFavourites,
+  withSorting
+)
+
+export default composition(App)

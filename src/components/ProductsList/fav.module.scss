@@ -1,0 +1,24 @@
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+.svg {
+  stroke-width: 1px;
+  stroke: green;
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+  fill: none;
+}
+
+.button:hover .svg,
+.button:focus .svg {
+  stroke-width: 2px;
+  stroke: rgb(2, 66, 2);
+}
+
+.active .svg {
+  fill: green;
+}

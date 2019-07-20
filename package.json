@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.4.3",
     "@svgr/webpack": "4.1.0",
+    "@typed/compose": "^1.0.0",
     "@types/node": "12.0.1",
     "@types/react": "16.8.17",
     "@types/react-dom": "16.8.4",
