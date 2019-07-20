@@ -35,7 +35,6 @@ const App = () => {
   const fetchItems = async () => {
     const url = 'http://avito.dump.academy/products'
     const { data } = await fetch(url).then((res) => res.json())
-    console.log('hello')
     return data
   }
 
@@ -75,9 +74,9 @@ const App = () => {
     <FiltersContext.Provider value={{ filters, updateFilters }}>
       <ProductsContext.Provider value={{ products: filteredItems, favourites, addProductToFav, removeProductFromFav }}>
         <SellersContext.Provider value={{ sellers }}>
-          <main className={style.wrapper}>
+          <div className={style.wrapper}>
             <Main />
-          </main>
+          </div>
         </SellersContext.Provider>
       </ProductsContext.Provider>
     </FiltersContext.Provider>

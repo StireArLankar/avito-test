@@ -20,9 +20,10 @@ const favRule = (array: IProduct[], showOnlyFav: boolean, favourites: string[]) 
 const data: IFilter[] = [
   {
     name: 'type',
-    title: 'Type',
+    title: 'Категория',
     type: 'select',
     default_value: null,
+    placeholder: 'Выберите категорию...',
     data: [
       { value: 'immovable', label: 'Недвижимость' },
       { value: 'cameras', label: 'Фотоаппараты' },
@@ -33,7 +34,7 @@ const data: IFilter[] = [
   },
   {
     name: 'sum',
-    title: 'Sum',
+    title: 'Сумма',
     type: 'sum_range',
     default_value: {
       from: null,
@@ -58,6 +59,7 @@ interface IBaseFilter {
 export interface ISelectFilter extends IBaseFilter {
   type: 'select'
   default_value: null
+  placeholder: string
   data: selectOption[]
   rule: (array: IProduct[], category: string) => IProduct[]
 }
