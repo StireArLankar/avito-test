@@ -40,14 +40,14 @@ interface IImmovable extends Base {
   square: number
 }
 
-export type IItem = IAuto | ILaptop | ICamera | IImmovable
+export type IProduct = IAuto | ILaptop | ICamera | IImmovable
 
 interface IContext {
-  items: IItem[]
+  products: IProduct[]
 }
 
-const BookContext = React.createContext<IContext>({
-  items: []
+const ProductsContext = React.createContext<IContext>({
+  products: []
 })
 
-export default BookContext
+export default ProductsContext

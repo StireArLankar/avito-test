@@ -4,7 +4,6 @@
     "jsx-wrap-multiline": false,
     "jsx-alignment": false,
     "jsx-no-multiline-js": false,
-    "jsx-curly-spacing": [true, "always"],
     "no-var-requires": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
