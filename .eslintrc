@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "react-app",
+    "standard"
+  ],
+  "rules": {
+    "jsx-quotes": ["error", "prefer-single"],
+    "jsx-a11y/anchor-is-valid": false,
+    "no-debugger":"warn",
+    "no-console":"warn"
+  }
+}

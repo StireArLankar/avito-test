@@ -1,0 +1,22 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-standard"],
+  "rules": {
+    "jsx-wrap-multiline": false,
+    "jsx-alignment": false,
+    "jsx-no-multiline-js": false,
+    "jsx-curly-spacing": [true, "always"],
+    "no-var-requires": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-debugger": false,
+    "interface-over-type-literal": false,
+    "no-floating-promises": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.{ts,tsx,js}",
+      "node_modules/**/*",
+      "coverage/**/*.{js,ts,tsx}"
+    ]
+  }
+}
