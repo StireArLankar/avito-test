@@ -1,17 +1,22 @@
-import React from 'react'
-import sortings from './data'
+import React, { useContext } from 'react'
 import SortingItem from './SortingItem'
+import SortingContext from 'Context/sorting'
+
+import styles from './sorting.module.scss'
 
 const Sorting = () => {
+  const context = useContext(SortingContext)
+
   const renderSortings = () => (
-    sortings.map((item) => (
-      <li key={item.name}>
-        <SortingItem />
+    Object.values(context.sortingData).map((item) => (
+      <li key={item.value} className={styles.item}>
+        <SortingItem {...item} />
       </li>
     ))
   )
+
   return (
-    <ul>
+    <ul className={styles.list}>
       {renderSortings()}
     </ul>
   )
