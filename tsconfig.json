@@ -24,7 +24,8 @@
     "paths": {
       "Context/*": ["context/*"],
       "Src/*": ["./*"]
-    }
+    },
+    "downlevelIteration": true
   },
   "include": [
     "src"

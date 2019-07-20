@@ -5,9 +5,16 @@ import Main from 'Src/pages/main'
 import style from './app.module.scss'
 
 const App = () => {
-  const [ items, setItems ] = useState<IProduct[] | []>([])
-  const [ filteredItems, setFilteredItems ] = useState<IProduct[] | []>([])
-  const [ sellers, setSellers ] = useState<ISeller[] | []>([])
+  const [ items, setItems ] = useState<IProduct[]>([])
+  const [ filteredItems, setFilteredItems ] = useState<IProduct[]>([])
+  const [ sellers, setSellers ] = useState<ISeller[]>([])
+  const [ favourites, setFavourites ] = useState<string[]>([])
+
+  const getFavourites = async () => {
+    const cached = localStorage.getItem(`books`)
+    const data = cached ? JSON.parse(cached) : []
+    return data
+  }
 
   const fetchItems = async () => {
     const url = 'http://avito.dump.academy/products'
@@ -21,28 +28,34 @@ const App = () => {
     return data
   }
 
+  const addProductToFav = (id: string) => {
+    const newFav = [ ...favourites, id]
+    setFavourites(newFav)
+    localStorage.setItem(`avito-fav`, JSON.stringify(newFav))
+  }
+
+  const removeProductFromFav = (id: string) => {
+    const newFav = favourites.filter((el: string) => el !== id)
+    setFavourites(newFav)
+    localStorage.setItem(`avito-fav`, JSON.stringify(newFav))
+  }
+
   useEffect(() => {
-    const getItems = async () => {
+    const load = async () => {
+      const loadedSellers = await fetchSellers()
       const loadedItems = await fetchItems()
+      const localFavourites = await getFavourites()
       setItems(loadedItems)
       setFilteredItems(loadedItems)
-    }
-
-    const getSellers = async () => {
-      const loadedSellers = await fetchSellers()
       setSellers(loadedSellers)
-    }
-
-    const load = async () => {
-      await getItems()
-      await getSellers()
+      setFavourites(localFavourites)
     }
 
     load()
   }, [])
 
   return (
-    <ProductsContext.Provider value={{ products: filteredItems }}>
+    <ProductsContext.Provider value={{ products: filteredItems, favourites, addProductToFav, removeProductFromFav }}>
       <SellersContext.Provider value={{ sellers }}>
         <main className={style.wrapper}>
           <Main />

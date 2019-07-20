@@ -1,12 +1,22 @@
 import React, { useContext, Fragment } from 'react'
 import { getFormattedPrice } from 'Src/utils'
 import SellersContext from 'Context/sellers'
-import { IProduct } from 'Context/products'
+import ProductsContext, { IProduct } from 'Context/products'
+import FavButton from './FavButton'
 
 const ProductPreview = (props: IProduct) => {
-  const context = useContext(SellersContext)
+  const sellersContext = useContext(SellersContext)
   const sellerId = props.relationships.seller
-  const seller = context.sellers.find((el) => el.id === sellerId)
+  const seller = sellersContext.sellers.find((el) => el.id === sellerId)
+
+  const productsContext = useContext(ProductsContext)
+  const isFav = productsContext.favourites.includes(props.id)
+
+  const onFavClick = () => {
+    return isFav
+      ? productsContext.addProductToFav(props.id)
+      : productsContext.removeProductFromFav(props.id)
+  }
 
   const renderSellerInfo = () => {
     return seller && (
@@ -27,6 +37,7 @@ const ProductPreview = (props: IProduct) => {
       <p>{getFormattedPrice(props.price)}</p>
       <p>10 октября 10:37</p>
       {renderSellerInfo()}
+      <FavButton isFav={isFav} onClick={onFavClick}/>
     </article>
   )
 }

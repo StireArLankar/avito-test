@@ -44,10 +44,16 @@ export type IProduct = IAuto | ILaptop | ICamera | IImmovable
 
 interface IContext {
   products: IProduct[]
+  favourites: string[]
+  addProductToFav: (id: string) => void
+  removeProductFromFav: (id: string) => void
 }
 
 const ProductsContext = React.createContext<IContext>({
-  products: []
+  products: [],
+  favourites: [],
+  addProductToFav: () => null,
+  removeProductFromFav: () => null
 })
 
 export default ProductsContext
