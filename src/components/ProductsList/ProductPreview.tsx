@@ -4,6 +4,8 @@ import SellersContext from 'Context/sellers'
 import ProductsContext, { IProduct } from 'Context/products'
 import FavButton from './FavButton'
 
+import styles from './product.module.scss'
+
 const ProductPreview = (props: IProduct) => {
   const sellersContext = useContext(SellersContext)
   const sellerId = props.relationships.seller
@@ -14,8 +16,8 @@ const ProductPreview = (props: IProduct) => {
 
   const onFavClick = () => {
     return isFav
-      ? productsContext.addProductToFav(props.id)
-      : productsContext.removeProductFromFav(props.id)
+      ? productsContext.removeProductFromFav(props.id)
+      : productsContext.addProductToFav(props.id)
   }
 
   const renderSellerInfo = () => {
@@ -30,11 +32,11 @@ const ProductPreview = (props: IProduct) => {
   return (
     <article>
       <h3>{props.title}</h3>
-      <div>
-        <img src={props.pictures[0]} alt={props.title}/>
+      <div className={styles.imgWrapper}>
+        <img src={props.pictures[0]} alt={props.title} className={styles.img}/>
         <span>{props.pictures.length - 1}</span>
       </div>
-      <p>{getFormattedPrice(props.price)}</p>
+      <p>{props.price && getFormattedPrice(props.price)}</p>
       <p>10 октября 10:37</p>
       {renderSellerInfo()}
       <FavButton isFav={isFav} onClick={onFavClick}/>
