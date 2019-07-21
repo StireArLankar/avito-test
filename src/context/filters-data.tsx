@@ -23,7 +23,7 @@ const data: IFilter[] = [
     title: 'Категория',
     type: 'select',
     default_value: null,
-    placeholder: 'Выберите категорию...',
+    placeholder: '',
     data: [
       { value: 'immovable', label: 'Недвижимость' },
       { value: 'cameras', label: 'Фотоаппараты' },

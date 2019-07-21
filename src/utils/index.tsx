@@ -1,5 +1,3 @@
-export const getFormattedPrice = (price: number | string | undefined) => {
-  // return price
-  if (!price) return 'Цена отсутствует'
+export const getFormattedPrice = (price: number | string) => {
   return Number(price).toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$& ')
 }

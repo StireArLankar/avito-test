@@ -4,7 +4,9 @@ import { IProduct } from 'Context/products'
 
 export const initialFilters = filters.reduce((acc, el) => ({ ...acc, [el.name]: el.default_value }), {})
 
-type rules = { [key: string]: (array: IProduct[], value: any, favourites?: string[]) => any[] }
+type rules = {
+  [key: string]: (array: IProduct[], value: any, favourites?: string[]) => any[]
+}
 
 export const filterRules: rules = filters.reduce((acc, el) => ({ ...acc, [el.name]: el.rule }), {})
 

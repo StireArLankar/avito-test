@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+
+  @media (min-width: 650px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 850px) {
+    flex-direction: column;
+    padding-top: 0;
+  }
+}
+
+.left {
+  box-sizing: border-box;
+
+  @media (min-width: 650px) {
+    width: 65%;
+  }
+
+  @media (min-width: 850px) {
+    width: auto;
+  }
+}
+
+.right {
+  box-sizing: border-box;
+
+  @media (min-width: 650px) {
+    width: 33%;
+  }
+
+  @media (min-width: 850px) {
+    width: auto;
+  }
+}

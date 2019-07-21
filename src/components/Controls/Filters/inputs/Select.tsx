@@ -24,6 +24,7 @@ const Select = (props: ISelectFilter) => {
         onChange={onChange}
         placeholder={props.placeholder}
         isClearable={true}
+        className={styles.select}
       />
     </div>
   )

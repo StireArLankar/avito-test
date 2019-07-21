@@ -26,10 +26,24 @@ const ProductPreview = (props: IProduct) => {
   const renderSellerInfo = () => {
     return seller && (
       <Fragment>
-        <p className={styles.paragraph}>{seller.name}</p>
-        <span className={styles.paragraph}>{seller.rating}</span>
+        <p className={cn(styles.seller, styles.paragraph)}>
+          <p className={styles.sellerTitle}>Продавец:</p>
+          <p className={styles.paragraph}>{seller.name}</p>
+          <p className={styles.paragraph}>{seller.rating}</p>
+        </p>
       </Fragment>
     )
+  }
+
+  const renderPrice = () => {
+    return props.price
+      ? (
+        <Fragment>
+          <span>Стоимость:</span>
+          <span>{`${getFormattedPrice(props.price)}₽`}</span>
+        </Fragment>
+      )
+      : 'Цена отсутствует'
   }
 
   return (
@@ -42,7 +56,9 @@ const ProductPreview = (props: IProduct) => {
         <span className={styles.imgCount}>{props.pictures.length - 1}</span>
       </div>
       <div className={styles.description}>
-        <p className={cn(styles.paragraph, styles.price)}>{getFormattedPrice(props.price)}</p>
+        <p className={cn(styles.paragraph, styles.price)}>
+          {renderPrice()}
+        </p>
         <p className={styles.paragraph}>10 октября 10:37</p>
         {renderSellerInfo()}
       </div>

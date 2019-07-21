@@ -1,15 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ProductsContext from 'Context/products'
+import SortingContext from 'Context/sorting'
 import ProductPreview from './ProductPreview'
 
 import styles from './products.module.scss'
 
 const ProductsList = () => {
-  const [shownAmount, setShownAmount] = useState(24)
-  const context = useContext(ProductsContext)
+  const [shownAmount, setShownAmount] = useState(12)
+  const { products } = useContext(ProductsContext)
+  const { value: sortingValue } = useContext(SortingContext)
+
+  useEffect(() => {
+    setShownAmount(12)
+  }, [products.length, sortingValue])
 
   const renderProducts = () => {
-    return context.products.slice(0, shownAmount).map((product) => (
+    return products.slice(0, shownAmount).map((product) => (
       <li key={product.id} className={styles.item}>
         <ProductPreview {...product} />
       </li>
@@ -17,15 +23,15 @@ const ProductsList = () => {
   }
 
   const renderFlexFixers = () => {
-    return (new Array(6).fill(1)).map((el, index) => <li key={index} className={styles.item} />)
+    return (new Array(6).fill(1)).map((_el, index) => <li key={index} className={styles.item} />)
   }
 
   const showMore = () => {
-    setShownAmount(shownAmount + 24)
+    setShownAmount(shownAmount + 12)
   }
 
   const renderShowMoreButton = () => {
-    return context.products.length > shownAmount
+    return products.length > shownAmount
       ? <button type='button' onClick={showMore} className={styles.showMore}>Показать еще</button>
       : null
   }

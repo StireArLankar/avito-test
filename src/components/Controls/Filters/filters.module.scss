@@ -1,13 +1,19 @@
 .list {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   margin: 0;
   padding: 3px 20px;
   list-style: none;
   border: 2px solid rgb(12, 143, 99);
   box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.3);
   border-radius: 30px;
-  margin-top: 10px;
+  margin-top: 0;
+
+  @media (min-width: 850px) {
+    flex-direction: row;
+    margin-top: 10px;
+  }
 }
 
 .item {
@@ -18,7 +24,12 @@
 }
 
 .item:not(:last-child) {
-  border-right: 2px solid rgb(54, 185, 93);
+  border-bottom: 2px solid rgb(54, 185, 93);
+
+  @media (min-width: 850px) {
+    border-right: 2px solid rgb(54, 185, 93);
+    border-bottom: none;
+  }
 }
 
 .filter {
@@ -85,4 +96,8 @@
 .checkbox + .checkboxIcon:hover {
   border: 2px solid black;
   box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3)
+}
+
+.select {
+  z-index: 100;
 }

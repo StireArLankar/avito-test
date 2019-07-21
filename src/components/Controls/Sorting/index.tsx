@@ -1,10 +1,15 @@
+import cn from 'classnames'
 import React, { useContext } from 'react'
 import SortingItem from './SortingItem'
 import SortingContext from 'Context/sorting'
 
 import styles from './sorting.module.scss'
 
-const Sorting = () => {
+interface IProps {
+  cn: string
+}
+
+const Sorting = (props: IProps) => {
   const context = useContext(SortingContext)
 
   const renderSortings = () => (
@@ -16,7 +21,7 @@ const Sorting = () => {
   )
 
   return (
-    <ul className={styles.list}>
+    <ul className={cn(styles.list, props.cn)}>
       {renderSortings()}
     </ul>
   )
