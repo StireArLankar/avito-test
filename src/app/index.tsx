@@ -16,13 +16,11 @@ const App = () => {
   const [ items, setItems ] = useState<IProduct[]>([])
   const [ filteredItems, setFilteredItems ] = useState<IProduct[]>([])
 
-  const filtersCtx = useContext(FiltersContext)
-  const { filters } = filtersCtx
+  const { filters } = useContext(FiltersContext)
 
   const sortingCtx = useContext(SortingContext)
 
-  const favouritesCtx = useContext(FavouritesContext)
-  const { favourites } = favouritesCtx
+  const { favourites } = useContext(FavouritesContext)
 
   const fetchItems = async () => {
     const url = 'http://avito.dump.academy/products'
